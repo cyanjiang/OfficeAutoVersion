@@ -1,0 +1,33 @@
+# Visual Studio
+.vs/
+bin/
+obj/
+*.user
+*.suo
+
+# VSTO 临时签名密钥（由 Visual Studio 自动生成）
+*_TemporaryKey.pfx
+
+# 发布输出
+publish/
+*.vsto
+App.publish/
+
+# 自测程序构建产物
+tests/OfficeAutoVersion.Selftest/bin/
+tests/OfficeAutoVersion.Selftest/obj/
+
+# 安装器打包临时文件（源码与构建脚本保留）
+installer/payload/
+installer/payload.zip
+
+# 文档转换/调试临时输出
+output/
+
+# UI 测试产生的文档与日志（截图保留）
+tools/ui-shots/docs/
+tools/ui-shots/*.log
+
+# Windows 缩略图缓存
+Thumbs.db
+Desktop.ini

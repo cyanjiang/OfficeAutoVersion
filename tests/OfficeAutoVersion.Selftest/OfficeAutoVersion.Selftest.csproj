@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <AssemblyName>OfficeAutoVersion.Selftest</AssemblyName>
+    <RootNamespace>OfficeAutoVersion.Selftest</RootNamespace>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Stubs.cs" />
+    <Compile Include="AddInStubs.cs" />
+    <!-- 直接链接被测试的源码，保证测的就是交付的代码 -->
+    <Compile Include="..\..\src\OfficeAutoVersion.Core\ContentDiff.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Core\Logger.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Core\MiniJson.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Core\OpcContent.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Core\OptionsStore.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Core\RecycleBin.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Core\TextDiff.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Core\VersionDiffer.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Core\VersionManager.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Core\VersionOptions.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Core\VersionPaths.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Common\DiffSummaryForm.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Common\IVersionHostActions.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Common\NativeTheme.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Common\OfficeTheme.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Common\SettingsForm.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Common\UiAppearance.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Common\UiTheme.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Common\VersionHistoryForm.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Common\VersioningRibbon.cs" />
+    <!-- 三个加载项工程（ThisAddIn 代码 + VSTO 生成的基础设施代码 + 宿主动作） -->
+    <Compile Include="..\..\src\OfficeAutoVersion.Word\ThisAddIn.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Word\ThisAddIn.Designer.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Word\WordVersionActions.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Excel\ThisAddIn.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Excel\ThisAddIn.Designer.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.Excel\ExcelVersionActions.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.PowerPoint\ThisAddIn.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.PowerPoint\ThisAddIn.Designer.cs" />
+    <Compile Include="..\..\src\OfficeAutoVersion.PowerPoint\PowerPointVersionActions.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\src\OfficeAutoVersion.Common\Ribbon.xml">
+      <LogicalName>OfficeAutoVersion.Common.Ribbon.xml</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

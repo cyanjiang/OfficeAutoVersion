@@ -1,0 +1,3 @@
+﻿System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 OfficeAutoVersion.Setup.SetupForm.UpdateRequirements()
+   在 OfficeAutoVersion.Setup.Program.RenderShot(String path, Boolean uninstall)

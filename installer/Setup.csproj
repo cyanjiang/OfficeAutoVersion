@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>OfficeAutoVersionSetup</AssemblyName>
+    <RootNamespace>OfficeAutoVersion.Setup</RootNamespace>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+
+    <Version>1.0.0</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Product>Office 自动版本</Product>
+    <AssemblyTitle>Office 自动版本 安装程序</AssemblyTitle>
+    <Company>OfficeAutoVersion</Company>
+    <Copyright>Copyright © OfficeAutoVersion</Copyright>
+    <NeutralLanguage>zh-Hans</NeutralLanguage>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Installer.cs" />
+    <Compile Include="SetupForm.cs" />
+    <!-- 三个加载项的产物（由 build-setup.ps1 生成） -->
+    <EmbeddedResource Include="payload.zip">
+      <LogicalName>Payload</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+  </ItemGroup>
+
+</Project>

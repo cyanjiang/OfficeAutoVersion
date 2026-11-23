@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2006/01/customui" onLoad="Ribbon_Load">
+  <ribbon>
+    <tabs>
+      <tab id="tabOfficeAutoVersion" label="自动版本">
+        <group id="grpOfficeAutoVersion" label="版本控制">
+          <!-- 复选框：勾选 = 自动建立版本开启，取消 = 关闭；状态一眼可见 -->
+          <checkBox id="chkAutoVersionEnabled"
+                    label="自动建立版本"
+                    getPressed="GetAutoVersionChecked"
+                    onAction="OnAutoVersionChecked" />
+          <separator id="sepOfficeAutoVersion" />
+          <button id="btnVersionHistory"
+                  label="版本历史..."
+                  size="normal"
+                  onAction="OnVersionHistory" />
+          <button id="btnOpenVersionFolder"
+                  label="打开版本文件夹"
+                  size="normal"
+                  onAction="OnOpenVersionFolder" />
+          <button id="btnSettings"
+                  label="设置..."
+                  size="normal"
+                  onAction="OnSettings" />
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>

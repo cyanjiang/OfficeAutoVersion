@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+    动作测试宿主：直接反射调用加载项里真实的 ExcelVersionActions，
+    用真实的 Excel 验证“并排查看比较”和“恢复版本”两条链路。
+    用法（需先编译 OfficeAutoVersion.sln）：
+      MSBuild.exe tools/ActionHarness/ActionHarness.csproj -p:Configuration=Debug
+      tools/ActionHarness/bin/Debug/ActionHarness.exe
+  -->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2C7D9B41-6A5E-4B77-9A1C-1F5C7E3D8A20}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ActionHarness</RootNamespace>
+    <AssemblyName>ActionHarness</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <LangVersion>latest</LangVersion>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="Office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+    <Reference Include="Microsoft.Office.Interop.PowerPoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+    <!-- 被测加载项及其依赖 -->
+    <Reference Include="OfficeAutoVersion.Excel">
+      <HintPath>..\..\src\OfficeAutoVersion.Excel\bin\Debug\OfficeAutoVersion.Excel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OfficeAutoVersion.Word">
+      <HintPath>..\..\src\OfficeAutoVersion.Word\bin\Debug\OfficeAutoVersion.Word.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OfficeAutoVersion.PowerPoint">
+      <HintPath>..\..\src\OfficeAutoVersion.PowerPoint\bin\Debug\OfficeAutoVersion.PowerPoint.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OfficeAutoVersion.Common">
+      <HintPath>..\..\src\OfficeAutoVersion.Common\bin\Debug\OfficeAutoVersion.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OfficeAutoVersion.Core">
+      <HintPath>..\..\src\OfficeAutoVersion.Core\bin\Debug\OfficeAutoVersion.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
