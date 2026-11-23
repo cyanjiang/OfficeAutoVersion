@@ -1,0 +1,38 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Office 自动版本 v1.0.0
+          body: |
+            Microsoft Office（Word / Excel / PowerPoint）VSTO 插件首个正式版本。
+
+            功能：
+            - 保存文档时自动创建历史版本
+            - 使用 Office 自带功能比较与恢复版本
+            - 差异摘要：逐字变化、上下文锚点、涉及页码与编号明细
+            - 功能区"自动建立版本"复选框，支持主题配色与 DPI 自适应
+            - 单文件安装器，附带使用说明文档
+
+            下载：
+            - OfficeAutoVersionSetup.exe（安装器）
+            - Office自动版本-使用说明.docx（用户手册）
+          files: |
+            dist/*
+          draft: false
+          prerelease: false
